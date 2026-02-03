@@ -7,15 +7,24 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    
+    defaults:
+      run:
+        working-directory: MusRoyalePCa
+
     steps:
     - uses: actions/checkout@v4
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0
-    - name: Restore
+
+    - name: Restore dependencies
       run: dotnet restore
+
     - name: Build
       run: dotnet build --no-restore
+
     - name: Run Unit Tests
       run: dotnet test --no-build --filter "Type!=Integration"
