@@ -7,10 +7,6 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    
-    defaults:
-      run:
-        working-directory: MusRoyalePCa
 
     steps:
     - uses: actions/checkout@v4
@@ -21,10 +17,10 @@ jobs:
         dotnet-version: 8.0
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore MusRoyalePCa/MusRoyalePC.sln
 
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build MusRoyalePCa/MusRoyalePC.sln --no-restore --configuration Release
 
     - name: Run Unit Tests
-      run: dotnet test --no-build --filter "Type!=Integration"
+      run: dotnet test MusRoyalePCa/MusRoyalePC.Tests/MusRoyalePC.Tests.csproj --no-build --configuration Release --filter "Type!=Integration"
