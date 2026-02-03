@@ -17,10 +17,10 @@ jobs:
         dotnet-version: 8.0
 
     - name: Restore dependencies
-      run: dotnet restore MusRoyalePCa/MusRoyalePC.sln
+      run: dotnet restore MusRoyalePCa/MusRoyalePC/MusRoyalePC.sln
 
     - name: Build
-      run: dotnet build MusRoyalePCa/MusRoyalePC.sln --no-restore --configuration Release
+      run: dotnet build MusRoyalePCa/MusRoyalePC/MusRoyalePC.sln --no-restore --configuration Release
 
     - name: Run Unit Tests
       run: dotnet test MusRoyalePCa/MusRoyalePC.Tests/MusRoyalePC.Tests.csproj --no-build --configuration Release --filter "Type!=Integration"
